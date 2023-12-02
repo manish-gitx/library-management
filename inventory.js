@@ -1,5 +1,18 @@
+    let inventory = [];
 
-    const inventory = [];
+    // Load inventory from local storage
+    function loadInventory() {
+        const storedInventory = localStorage.getItem('inventory');
+        if (storedInventory) {
+            inventory = JSON.parse(storedInventory);
+            updateTable();
+        }
+    }
+
+    // Save inventory to local storage
+    function saveInventory() {
+        localStorage.setItem('inventory', JSON.stringify(inventory));
+    }
 
     function addItem() {
         const itemName = document.getElementById('itemName').value;
@@ -17,6 +30,7 @@
             }
 
             updateTable();
+            saveInventory();
         }
 
         // Clear input fields
@@ -60,6 +74,7 @@
         if (index !== -1) {
             inventory[index].quantity += 1;
             updateTable();
+            saveInventory();
         }
     }
 
@@ -68,6 +83,7 @@
         if (index !== -1 && inventory[index].quantity > 0) {
             inventory[index].quantity -= 1;
             updateTable();
+            saveInventory();
         }
     }
 
@@ -107,3 +123,6 @@
             actionCell.appendChild(decreaseButton);
         });
     }
+
+    // Load inventory from local storage on page load
+    window.addEventListener('load', loadInventory);
