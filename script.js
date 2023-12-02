@@ -63,6 +63,7 @@ addButton.addEventListener('click', (event) => {
 
 
     count++;
+    updateTable();
 });
 
 

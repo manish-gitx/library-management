@@ -14,29 +14,37 @@
 
 <body>
 
-    <nav>
-        <div class="details">
-        <h1>Scaler Library</h1>
-        <a href="inventory.html"><h2>Inventory</h2></a>
-        <h2>Home</h2>
-        </div>
+    <div class="inventory">
+        <h2>Inventory Management</h2>
 
-        <div>
-            <form>
-                <input type="text" placeholder="Search" required>
-                <input type="submit" value="Submit">
-            </form>
-           
-        </div>
-       
-    </nav>
+
+<label for="itemName">Item Name:</label>
+<input type="text" id="itemName">
+<label for="quantity">Quantity:</label>
+<input type="number" id="quantity">
+<button onclick="addItem()">Add Item</button>
+
+<!-- Add a search input field -->
+
+
+<h3>Inventory List</h3>
+
+<table id="inventoryTable">
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Action</th>
+    </tr>
+</table>
+
+    </div>
 
     <main>
         <h1>Welcome to Scaler Library</h1>
 
         <form>
             <input type="text" class="get-name" required placeholder="UserName">
-            <input type="text" class="get-book" required placeholder="Book Name">
+            <input type="text" id="search" class="get-book" placeholder="Search" oninput="searchItems()">
             <input type="text" class="get-ID" required placeholder="ID-N0">
             <input type="submit" class="sub-input" value="ADD"> 
         </form>
