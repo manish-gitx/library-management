@@ -84,14 +84,7 @@ function updateLi1Values() {
         li1.innerText = index + 1;
     });
 
-    const lastDiv = divs[divs.length - 1];
-    const lastLi1 = lastDiv.querySelector('li:first-child');
-    var check = parseInt(lastLi1.innerText);
-    if (check == 1) {
-        count = 1;
-    } else {
-        count = parseInt(lastLi1.innerText) + 1;
-    }
+    count = divs.length + 1;
 }
 
 function updateLocalStorage() {
@@ -154,3 +147,5 @@ function createRow(item) {
         updateLocalStorage();
     });
 }
+
+
