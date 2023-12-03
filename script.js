@@ -5,7 +5,7 @@ const addButton = document.querySelector('.sub-input');
 const main = document.querySelector('.info');
 let count = 1;
 
-// Load data from local storage
+
 window.addEventListener('DOMContentLoaded', () => {
     const data = JSON.parse(localStorage.getItem('libraryData'));
     if (data) {

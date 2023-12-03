@@ -1,6 +1,5 @@
     let inventory = [];
 
-    // Load inventory from local storage
     function loadInventory() {
         const storedInventory = localStorage.getItem('inventory');
         if (storedInventory) {
@@ -9,7 +8,6 @@
         }
     }
 
-    // Save inventory to local storage
     function saveInventory() {
         localStorage.setItem('inventory', JSON.stringify(inventory));
     }
@@ -65,8 +63,16 @@
                 decreaseButton.textContent = '-';
                 decreaseButton.onclick = () => decreaseQuantity(item.name);
                 actionCell.appendChild(decreaseButton);
+            } else {
+                // Remove item from local storage if quantity is 0
+                const existingItemIndex = inventory.findIndex(i => i.name === item.name);
+                if (existingItemIndex !== -1) {
+                    inventory.splice(existingItemIndex, 1);
+                }
             }
         });
+
+        saveInventory();
     }
 
     function increaseQuantity(itemName) {
@@ -124,5 +130,4 @@
         });
     }
 
-    // Load inventory from local storage on page load
     window.addEventListener('load', loadInventory);
